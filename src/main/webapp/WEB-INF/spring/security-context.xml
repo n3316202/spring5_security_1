@@ -9,16 +9,32 @@
 	<http>
 		<intercept-url pattern="/security/all" access="permitAll" />
 		<intercept-url pattern="/security/member" access="hasRole('ROLE_MEMBER')" /> 
-		<form-login/>
+		<intercept-url pattern="/security/admin" access="hasRole('ROLE_ADMIN')" />  
+		<!-- 이건 디폴트! 기본 로그인 페이지 그래서 이걸 자기걸로 커스터마이징 하겠다는 것! -->
+		<!-- 로그인 페이지 커스텀 화 -->
+		<!-- <form-login/> -->
+		
+		<form-login login-page="/login/loginForm"
+              default-target-url="/"
+              authentication-failure-url="/login/loginForm?error"
+              username-parameter="username"
+              password-parameter="password" />
+              
+		
+		
+		<!-- 403 에러 처리 -->
+		<access-denied-handler error-page="/security/accessError"/>
 	</http>
 	
 	<authentication-manager>
 	  
 	  <authentication-provider> 
+	    
 	    <user-service> 
 	      <user name="member" password="{noop}member" authorities="ROLE_MEMBER" /> 
-	      <user name="mananger" password="{noop}mananger" authorities="ROLE_MEMBER" /> 
-	    </user-service> 
+	      <user name="admin" password="{noop}admin" authorities="ROLE_MEMBER,ROLE_ADMIN" /> 
+	    </user-service>
+	     
 	  </authentication-provider>
 		
 	</authentication-manager>
