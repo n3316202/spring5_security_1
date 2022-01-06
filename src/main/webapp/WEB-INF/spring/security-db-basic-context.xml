@@ -41,7 +41,10 @@
         <authentication-provider>
         <password-encoder ref="customNoOpPasswordEncoder"/> 
         <jdbc-user-service 
-                    data-source-ref="dataSource"		
+            data-source-ref="dataSource"
+            users-by-username-query="select ename, empno, 1  from emp where ename = ?"
+  			authorities-by-username-query="select ename,case when job='MANAGER' then 'ROLE_ADMIN' else  'ROLE_USER' end authority from emp where ename=?"            
+                    		
         />
         </authentication-provider>
     </authentication-manager> 
