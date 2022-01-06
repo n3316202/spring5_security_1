@@ -23,10 +23,13 @@ public class EmpService {
 	@Inject
 	private EmpMapper empMapper;
 	
-	public EmpVO getUser(String empNo){
+	public EmpVO getUser(String ename){
 		log.info("readUser .. ");
 		
-		return empMapper.readUser(empNo);
+		EmpVO empVO = empMapper.readUser(ename);
+		empVO.setAuthList(empMapper.readAuthority(ename));
+		
+		return empVO;
 	}
 	
 
