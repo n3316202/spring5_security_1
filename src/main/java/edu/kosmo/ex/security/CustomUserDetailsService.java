@@ -18,7 +18,8 @@ import lombok.extern.log4j.Log4j;
 
 
 /*
- * username을 가지고 사용자 정보를 조회하고 session에 저장될 사용자 주체 정보인 UserDetails를 반환하는 Interface다.
+ * username을 가지고 사용자 정보를 조회하고 session에 저장될 사용자 주체 정보인 
+ * UserDetails를 반환하는 Interface다.
  */
 
 @Log4j

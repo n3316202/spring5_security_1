@@ -77,14 +77,6 @@ public class HomeController {
         UserDetails userDetails = (UserDetails) auth.getPrincipal();
         System.out.println(userDetails.getUsername());
 
-        //4.
-        CustomUserDetails couCustomUserDetails =  (CustomUserDetails) auth.getPrincipal();
-        System.out.println(couCustomUserDetails.getEmp());
-        
-    	//5.User 클래스로 변환 하여 가져오는 방법
-        couCustomUserDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        user_id = couCustomUserDetails.getUsername();
-        System.out.println("유저 아이디:" + user_id   );
         
         return "home";
 	}

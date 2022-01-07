@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import edu.kosmo.ex.mapper.EmpMapper;
 import edu.kosmo.ex.vo.EmpVO;
@@ -20,6 +21,7 @@ import lombok.extern.log4j.Log4j;
 @Service
 public class EmpService {
 	
+
 	@Inject
 	private EmpMapper empMapper;
 	
@@ -31,6 +33,4 @@ public class EmpService {
 		
 		return empVO;
 	}
-	
-
 }

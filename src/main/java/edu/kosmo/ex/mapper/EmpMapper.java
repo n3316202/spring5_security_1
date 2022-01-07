@@ -2,6 +2,7 @@ package edu.kosmo.ex.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -18,5 +19,8 @@ public interface EmpMapper {
 	
 	@Select("select ename,case when job='MANAGER' then 'ROLE_ADMIN' else  'ROLE_USER' end authority from emp where ename = #{ename}")
 	public List<AuthVO> readAuthority(String name);
+	
+	@Insert("insert into emp(ename,empno) values(#{ename},#{empno})")
+	public int insertEmp(EmpVO empVO);
 	
 }
