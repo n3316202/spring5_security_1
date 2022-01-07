@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import edu.kosmo.ex.mapper.EmpMapper;
 import edu.kosmo.ex.vo.CustomUser;
+import edu.kosmo.ex.vo.CustomUserDetails;
 import edu.kosmo.ex.vo.EmpVO;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -43,9 +44,12 @@ public class CustomUserDetailsService implements UserDetailsService  {
 		EmpVO vo = empMapper.readUser(ename);
 		vo.setAuthList(empMapper.readAuthority(ename)); 
 		
+		
+		
 		log.warn("queried by EmpVO mapper: " + vo);		
 		
-		return vo == null ? null : new CustomUser(vo);
+		//return vo == null ? null : new CustomUser(vo);		
+		return vo == null ? null : new CustomUserDetails(vo);
 		
 	}	
 
