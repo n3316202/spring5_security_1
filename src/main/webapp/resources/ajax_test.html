@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+ <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!-- https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json -->
+	<script>
+		$(document).ready( () => {
+
+			$.ajax({ 
+				type: "get", 
+				url : "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json", 
+				success : function(data) { 
+					// Sucess시, 처리 
+					console.log(data); 
+					console.log(data.squadName); 
+					console.log(data.members[0]); 
+					console.log(data.members[0].name); 
+
+					$(data.members).each( (index,member)=>{
+						console.log(member);
+
+						}
+					);
+					
+				}, 
+				error : function(xhr, textStatus, errorThrown){ 
+					// 	Error시, 처리 
+						alert(xhr); 
+						alert(textStatus); 	
+						alert(errorThrown);
+					} 
+				});
+		
+		});
+		
+		$(document).ready( () => {
+
+			$.ajax({ 
+				type: "get", 
+				url : "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json", 
+				success : function(data) { 
+					// Sucess시, 처리 
+					console.log(data); 
+					console.log(data.squadName); 
+					console.log(data.members[0]); 
+					console.log(data.members[0].name); 
+
+					$(data.members).each( (index,member)=>{
+						console.log(member);
+
+						}
+					);
+					
+				}, 
+				error : function(xhr, textStatus, errorThrown){ 
+					// 	Error시, 처리 
+						alert(xhr); 
+						alert(textStatus); 	
+						alert(errorThrown);
+					} 
+				});
+			
+			$.ajax({ 
+				type: "get", 
+				url : "/ex/sample/getText", 
+				success : function(data) { 
+					// Sucess시, 처리 
+					console.log(data); 
+
+				}, 
+				error : function(xhr, textStatus, errorThrown){ 
+					// 	Error시, 처리 
+						alert(xhr); 
+						alert(textStatus); 	
+						alert(errorThrown);
+					} 
+				});
+		
+		});
+		
+		
+	</script>
+	
+</head>
+<body>
+
+</body>
+</html>
