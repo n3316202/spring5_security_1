@@ -2,6 +2,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<!-- ajax 통신을 위한 meta tag -->
+<meta name="_csrf" content="${_csrf.token}">
+<meta name="_csrf_header" content="${_csrf.headerName}">
 <title>Insert title here</title>
  <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
@@ -67,6 +70,65 @@
 			$.ajax({ 
 				type: "get", 
 				url : "/ex/sample/getText", 
+				success : function(data) { 
+					// Sucess시, 처리 
+					console.log(data); 
+
+				}, 
+				error : function(xhr, textStatus, errorThrown){ 
+					// 	Error시, 처리 
+						alert(xhr); 
+						alert(textStatus); 	
+						alert(errorThrown);
+					} 
+				});
+			
+			
+			$.ajax({ 
+				type: "get",
+				data:{weight:100,height:150}, 
+				url : "/ex/sample/check.json", 
+				success : function(data) { 
+					// Sucess시, 처리 
+					console.log(data); 
+
+				}, 
+				error : function(xhr, textStatus, errorThrown){ 
+					// 	Error시, 처리 
+						alert(xhr); 
+						alert(textStatus); 	
+						alert(errorThrown);
+					} 
+				});
+			
+			$.ajax({ 
+				type: "get",
+				url : "/ex/sample/product/tomorow/100" + ".json", 
+				success : function(data) { 
+					// Sucess시, 처리 
+					console.log(data); 
+
+				}, 
+				error : function(xhr, textStatus, errorThrown){ 
+					// 	Error시, 처리 
+						alert(xhr); 
+						alert(textStatus); 	
+						alert(errorThrown);
+					} 
+				});
+			
+			// ajax 통신을 위한 csrf 설정
+			var token = $("meta[name='_csrf']").attr("content");
+			var header = $("meta[name='_csrf_header']").attr("content");
+			
+			$.ajax({ 
+				type: "post",
+                beforeSend : function(xhr)
+                {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+                    xhr.setRequestHeader(header, token);
+                },
+				data:{tno:100,owner:"aaa",grade:"goood"},
+				url : "/ex/sample/ticket" + ".json", 
 				success : function(data) { 
 					// Sucess시, 처리 
 					console.log(data); 

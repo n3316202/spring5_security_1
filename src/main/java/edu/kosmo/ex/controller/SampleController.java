@@ -86,6 +86,8 @@ public class SampleController {
 	@GetMapping("/product/{cat}/{pid}")
 	public String[] getPath(@PathVariable("cat") String cat, @PathVariable("pid") Integer pid) {
 
+		log.info("getPath" + cat + "pid::" + pid);
+		
 		return new String[] { "category: " + cat, "productid: " + pid };
 	}
 
